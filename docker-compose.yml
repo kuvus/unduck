@@ -7,7 +7,7 @@ services:
     container_name: unduck
     restart: unless-stopped
     networks:
-      - traefik
+      - proxy
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.unduck.rule=Host(`${TRAEFIK_HOST:?TRAEFIK_HOST is required}`)"
@@ -15,5 +15,5 @@ services:
       - "traefik.http.services.unduck.loadbalancer.server.port=80"
 
 networks:
-  traefik:
+  proxy:
     external: true
