@@ -46,6 +46,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   color: #1a1a1a;
+  background: transparent;
 }
 
 h1,
@@ -84,16 +85,25 @@ textarea {
   align-items: center;
   gap: 8px;
   margin-top: 16px;
+  width: 100%;
 }
 
-/* Add this new style */
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px 80px;
+}
+
 .content-container {
   max-width: 36rem;
+  width: min(100%, 36rem);
   text-align: center;
   padding: 0 8px;
 }
 
-/* Update url-input width to be 100% since container will control max width */
 .url-input {
   padding: 8px 12px;
   border: 1px solid #ddd;
@@ -129,7 +139,73 @@ textarea {
   background: #28a745;
 }
 
-/* Add footer styles */
+.default-bang-form {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.default-bang-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.default-bang-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.default-bang-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.save-button {
+  flex: 0 0 auto;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f5f5f5;
+  color: inherit;
+  font-weight: 600;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.save-button:hover {
+  background: #ececec;
+}
+
+.save-button:active {
+  background: #e3e3e3;
+}
+
+.default-bang-help,
+.default-bang-status {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.default-bang-help {
+  color: #666;
+}
+
+.default-bang-status {
+  min-height: 21px;
+  color: #444;
+}
+
+.default-bang-status[data-state="error"] {
+  color: #b42318;
+}
+
+.default-bang-status[data-state="success"] {
+  color: #067647;
+}
+
 .footer {
   position: fixed;
   bottom: 16px;
@@ -182,6 +258,29 @@ textarea {
     color: #fff;
   }
 
+  .default-bang-input,
+  .save-button {
+    border-color: #3d3d3d;
+    background-color: #191919;
+    color: #fff;
+  }
+
+  .save-button:hover {
+    background: #222;
+  }
+
+  .save-button:active {
+    background: #333;
+  }
+
+  .default-bang-help {
+    color: #999;
+  }
+
+  .default-bang-status {
+    color: #ccc;
+  }
+
   .copy-button img {
     filter: invert(1);
   }
@@ -192,5 +291,15 @@ textarea {
 
   .copy-button:active {
     background: #333;
+  }
+}
+
+@media (max-width: 640px) {
+  .default-bang-controls {
+    flex-direction: column;
+  }
+
+  .save-button {
+    width: 100%;
   }
 }
